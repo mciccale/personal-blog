@@ -6,7 +6,7 @@ export default function About() {
   return (
     <MainContainer>
       <TextSection>
-        <Header>AAAaaaa</Header>
+        <Header>About Me</Header>
         <p>
           Mollit eu ex dolor in deserunt Lorem elit occaecat anim commodo do
           sint pariatur. Sint eu in consectetur excepteur. Amet aute quis
