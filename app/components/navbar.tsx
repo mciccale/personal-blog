@@ -1,19 +1,19 @@
 'use client';
 
-import { useNavbarScroll } from '../hooks/useNavbarScroll';
+import { useVisibilityOnScrollUp } from 'use-visibility-on-scroll-up';
 import NavbarItem from './navbar-item';
 
 export default function Navbar() {
-  const { visible, lastScroll } = useNavbarScroll();
+  const { visible, lastScroll } = useVisibilityOnScrollUp();
 
   return (
     <header
-      className={`px-8 bg-white opacity-90 fixed top-0 w-full shadow-lg ${
+      className={`fixed top-0 w-full bg-white px-8 opacity-90 shadow-lg ${
         visible || lastScroll === 0 ? 'visible' : 'hidden'
       }`}
     >
-      <nav className="my-4 mx-auto max-w-2xl">
-        <ul className="flex justify-between items-center">
+      <nav className="mx-auto my-4 max-w-2xl">
+        <ul className="flex items-center justify-between">
           <NavbarItem label="Home" path="/" />
           <NavbarItem label="About Me" path="/about" />
           <NavbarItem label="Posts" path="/posts" />

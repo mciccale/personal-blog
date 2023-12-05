@@ -4,7 +4,7 @@ interface Props {
 
 export default function TextSection({ children }: Props) {
   return (
-    <section className="prose flex flex-col mx-auto max-w-2xl justify-center md:text-lg h-full">
+    <section className="prose mx-auto flex h-full max-w-2xl flex-col justify-center md:text-lg">
       {children}
     </section>
   );

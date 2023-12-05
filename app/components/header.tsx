@@ -4,6 +4,6 @@ interface Props {
 
 export default function Header({ children }: Props) {
   return (
-    <h1 className="text-3xl md:text-4xl pt-4 md:pt-6 font-bold">{children}</h1>
+    <h1 className="pt-4 text-3xl font-bold md:pt-6 md:text-4xl">{children}</h1>
   );
 }
