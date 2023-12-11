@@ -24,7 +24,7 @@ export default function About() {
               </strong>
               .
             </p>
-            <figure className="w-full max-w-[300px] flex-shrink-0 px-7">
+            <figure className="hidden w-full max-w-[300px] flex-shrink-0 px-7 md:block">
               <Image
                 className="h-auto w-full border-spacing-2 rounded-lg border-8 border-white shadow-lg"
                 src={profilePicture}
