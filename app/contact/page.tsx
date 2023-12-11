@@ -42,6 +42,7 @@ export default function Contact() {
     <MainContainer>
       <TextSection>
         <form
+          noValidate
           ref={formRef}
           onSubmit={handleSubmit(onSubmit)}
           className="flex flex-col gap-10"
@@ -61,7 +62,10 @@ export default function Contact() {
             className="rounded-lg border-2 border-solid border-blue-200 p-3 focus:shadow-lg focus:outline-none focus:ring-2 focus:ring-blue-600"
             type="email"
             placeholder="your@email.com"
-            {...register('from_email', { required: true })}
+            {...register('from_email', {
+              required: true,
+              pattern: /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/,
+            })}
           />
           {errors.from_email && (
             <span className="font-semibold text-red-500">
