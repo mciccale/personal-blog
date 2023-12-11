@@ -1,6 +1,5 @@
 import { MDXRemote } from 'next-mdx-remote/rsc';
-import { serialize } from 'next-mdx-remote/serialize';
-import { getPostBySlug } from '@/app/lib/utils';
+import { getPostBySlug } from '@/app/lib/postUtils';
 import MainContainer from '@/app/components/main-container';
 import TextSection from '@/app/components/text-section';
 import Header from '@/app/components/header';

@@ -1,26 +1,13 @@
-import { compareDates, getPostsPreview } from '../lib/utils';
+import { getPostsPreview } from '../lib/postUtils';
 import MainContainer from '../components/main-container';
-import PostPreview from './components/post-preview';
+import PostsSection from './components/posts-section';
 
 export default async function Posts() {
   const posts = await getPostsPreview();
 
   return (
     <MainContainer>
-      <section className="mx-auto flex max-w-2xl flex-col justify-around gap-2">
-        {posts
-          .sort((a, b) => compareDates(b.date, a.date))
-          .map(({ title, image, description, date, slug }) => (
-            <PostPreview
-              key={slug}
-              title={title}
-              image={image}
-              description={description}
-              date={date}
-              slug={slug}
-            />
-          ))}
-      </section>
+      <PostsSection posts={posts} />
     </MainContainer>
   );
 }
