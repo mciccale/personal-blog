@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import Header from '../components/header';
 import MainContainer from '../components/main-container';
 import TextSection from '../components/text-section';
@@ -7,34 +8,64 @@ export default function About() {
     <MainContainer>
       <TextSection>
         <Header>About Me</Header>
-        <p>
-          Mollit eu ex dolor in deserunt Lorem elit occaecat anim commodo do
-          sint pariatur. Sint eu in consectetur excepteur. Amet aute quis
-          deserunt dolor enim sint nisi. Qui aliquip enim est veniam irure
-          fugiat. Aute dolore commodo pariatur exercitation id nulla non est
-          duis magna aute magna. Non fugiat nulla ea quis consectetur deserunt
-          dolore ea. Ex mollit magna cillum nulla consectetur aute aute eiusmod
-          laboris minim qui Lorem veniam. Exercitation do aliqua fugiat veniam
-          cupidatat esse reprehenderit culpa esse adipisicing sunt. Eu mollit
-          anim irure minim anim ullamco commodo. Id ut id esse velit irure non
-          cillum laboris. Ad voluptate laborum ex amet minim officia mollit qui
-          dolor cupidatat cillum occaecat ad. Amet in ex mollit officia veniam.
-          Commodo pariatur sunt duis incididunt ad anim velit excepteur occaecat
-          ut. Laboris sit proident irure dolore deserunt. Voluptate magna aute
-          cillum amet sunt eu duis duis eiusmod aliqua voluptate mollit. Aliquip
-          qui amet cillum fugiat. Laborum velit sunt qui cupidatat laboris enim
-          exercitation est magna. Sit ex eiusmod ea et sunt magna proident
-          officia minim cillum quis. Exercitation ea sit adipisicing non
-          excepteur eu enim veniam sunt ullamco elit enim et nostrud. Ut in ea
-          ut velit sunt esse consequat Lorem cupidatat est adipisicing veniam
-          proident cupidatat. Excepteur cupidatat consequat occaecat quis
-          cupidatat elit amet velit. Nostrud nostrud cillum nostrud exercitation
-          officia exercitation deserunt ullamco dolore culpa nulla. Tempor do
-          sunt nulla excepteur. Mollit cillum duis est fugiat veniam. Nisi qui
-          cupidatat consequat incididunt minim commodo labore id sint. Proident
-          ea voluptate do reprehenderit ipsum ut mollit veniam culpa est non
-          adipisicing sit.
-        </p>
+        <article>
+          <div className="flex justify-between">
+            <p>
+              I&apos;m a passionate software engineer with{' '}
+              <strong className="font-semibold">
+                2+ years of experience developing software
+              </strong>
+              . I have proven experience working with highly distributed global
+              teams and multiple projects simultaneously. I am fully committed
+              on delivering{' '}
+              <strong className="font-semibold">
+                high quality results for the business
+              </strong>
+              .
+            </p>
+            <figure className="w-full max-w-[300px] flex-shrink-0 px-7">
+              <Image
+                className="h-auto w-full border-spacing-2 rounded-lg border-8 border-white shadow-lg"
+                src={'/profile-picture.png'}
+                layout="responsive"
+                alt={`Marco Ciccale Baztan profile picture`}
+                width={300}
+                height={75}
+              />
+            </figure>
+          </div>
+          <p>
+            Always giving my 100% for the team and the project. At my core, I am
+            a developer who thrives on{' '}
+            <strong className="font-semibold">
+              tackling complex challenges and stepping out of my comfort zone
+            </strong>
+            . I approach every project with a strategic mindset and a
+            customer-centric perspective, ensuring that our solutions are not
+            only <strong className="font-semibold">innovative</strong> but also
+            deliver tangible value. I excel in environments that value impact,
+            autonomy, and the empowerment of full-stack teams responsible for
+            their own services.
+          </p>
+          <p>
+            I&apos;m currently working as a{' '}
+            <strong className="font-semibold">Research Assistant</strong> at{' '}
+            <a href="https://software.imdea.org">
+              <strong className="font-semibold">
+                IMDEA Software Institute
+              </strong>
+            </a>{' '}
+            while finishing my last year of the{' '}
+            <strong className="font-semibold">
+              computer engineering degree
+            </strong>{' '}
+            at{' '}
+            <strong className="font-semibold">
+              Universidad Politécnica de Madrid
+            </strong>
+            .
+          </p>
+        </article>
       </TextSection>
     </MainContainer>
   );

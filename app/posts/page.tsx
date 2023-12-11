@@ -3,12 +3,11 @@ import MainContainer from '../components/main-container';
 import PostPreview from './components/post-preview';
 
 export default async function Posts() {
-  await new Promise<void>((res) => setTimeout(() => res(), 3000));
   const posts = await getPostsPreview();
 
   return (
     <MainContainer>
-      <section className="flex flex-col gap-2 justify-around mx-auto max-w-2xl">
+      <section className="mx-auto flex max-w-2xl flex-col justify-around gap-2">
         {posts
           .sort((a, b) => compareDates(b.date, a.date))
           .map(({ title, image, description, date, slug }) => (
