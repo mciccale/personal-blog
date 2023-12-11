@@ -2,4 +2,4 @@
 
 My own personal blog / website.
 
-[mciccale.live](mciccale.live)
+[mciccale.live](https://mciccale.live)
