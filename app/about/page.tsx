@@ -27,6 +27,7 @@ export default function About() {
               <Image
                 className="h-auto w-full border-spacing-2 rounded-lg border-8 border-white shadow-lg"
                 src={'/profile-picture.png'}
+                priority={true}
                 layout="responsive"
                 alt={`Marco Ciccale Baztan profile picture`}
                 width={300}

@@ -15,6 +15,7 @@ export default function PostPreview({
           <Image
             className="rounded-l-md"
             src={image}
+            priority={true}
             alt={`${title} cover`}
             width={200}
             height={75}

@@ -33,7 +33,7 @@ export default function Home() {
         </p>
         <p>
           I hope you can find this website useful and/or interesting in any
-          manner. Feel free to contact me <Link href="/contact">here</Link>
+          manner. Feel free to contact me <Link href="/contact">here</Link>.
         </p>
       </TextSection>
     </MainContainer>
