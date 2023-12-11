@@ -1,5 +1,4 @@
 import MainContainer from '../components/main-container';
-import PostPreviewSkeleton from './components/post-preview-skel';
 
 export default function Loading() {
   return (
