@@ -2,6 +2,7 @@ import Image from 'next/image';
 import Header from '../components/header';
 import MainContainer from '../components/main-container';
 import TextSection from '../components/text-section';
+import profilePicture from '@/public/profile-picture.png';
 
 export default function About() {
   return (
@@ -26,12 +27,10 @@ export default function About() {
             <figure className="w-full max-w-[300px] flex-shrink-0 px-7">
               <Image
                 className="h-auto w-full border-spacing-2 rounded-lg border-8 border-white shadow-lg"
-                src={'/profile-picture.png'}
+                src={profilePicture}
                 priority={true}
                 layout="responsive"
                 alt={`Marco Ciccale Baztan profile picture`}
-                width={300}
-                height={75}
               />
             </figure>
           </div>
