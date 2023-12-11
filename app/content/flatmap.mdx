@@ -1,0 +1,192 @@
+---
+title: 'Understanding flatMap'
+description: 'Exploring flatMap: A Powerful Array Method in JavaScript.'
+image: '/flatmap/cover.webp'
+date: '2023-12-11'
+---
+
+# Understanding flatMap
+
+## Introduction
+
+Today, we're diving into arrays, one of the most widely used data structures in programming.
+
+The explanation of the basics of arrays may be a great topic for another post, I'll assume you already know how arrays work.
+
+## Arrays in JavaScript
+
+As web developers, it is crucial to know how to manipulate arrays in the king of web programming languages: **JavaScript**, which offers a robust set of methods for array manipulation.
+
+## Fruits Stock Example
+
+Let's understand the uses of **_flatMap_** by following a really simple example. Let's say I'm managing the stock of my fruitery. I have a list of fruits in stock and I want to add a price to them:
+
+```js
+const fruitsStock = [
+  {
+    name: 'apple',
+    isRotten: false,
+  },
+  {
+    name: 'banana',
+    isRotten: false,
+  },
+  {
+    name: 'peach',
+    isRotten: true,
+  },
+];
+```
+
+You can see that each existence is represented by a **JavaScript** object, it has 2 properties:
+
+- **name**: the name of the fruit.
+- **isRotten**: whether the fruit is rotten or not.
+
+### filter
+
+We only have to expose the fruits that aren't rotten. **JavaScript** array methods will help us on this one, we will use the filter method to achieve this.
+
+```js
+const updatedFruitsStock = fruitsStock.filter((fruit) => !fruit.isRotten);
+```
+
+With this one liner, we created a new stock list that only contains the suitable fruits to expose. Note that we're using the so-called _implicit return_ in the function passed as parameter to the **_filter_** function, this means that we can omit the **_return_** keyword and return the expression directly.
+
+```js
+[
+  {
+    name: 'apple',
+    isRotten: false,
+  },
+  {
+    name: 'banana',
+    isRotten: false,
+  },
+];
+```
+
+### map
+
+We now want to add a price tag to each of the fruits so we can expose them to the clients. The easisest way to do it is using the **_map_** method as follows:
+
+```js
+const calculatePrice = (fruitName) => {
+  return /* the price of the fruit */;
+};
+
+const taggedFruitsStock = updatedFruitsStock.map((fruit) => {
+  return {
+    ...fruit,
+    price: calculatePrice(fruit.name),
+  };
+});
+```
+
+It may be a little confusing what is going on here, let's break it down into little steps:
+
+1. We defined a function that calculates the price of a fruit depending on its name.
+2. We applied the **_map_** method to our stock of fruits. This method will create a new array with the same length as the original array, but with the elements transformed (mapped).
+3. For each fruit of the array, we returned a new object that takes all the properties of the original object (fruit) with the spread operator (...) and adds a new property that includes the price of the fruit.
+
+The result of the mapping would look as follows:
+
+```js
+[
+  {
+    name: 'apple',
+    isRotten: false,
+    price: 10,
+  },
+  {
+    name: 'banana',
+    isRotten: false,
+    price: 7,
+  },
+];
+```
+
+We have mapped (transformed) our initial stock to add the price of each fruit. Every element in the original array is replaced with a new element.
+
+### map-filter
+
+The typical way of implementing this transformation in a more concise way would be:
+
+```js
+fruitsStock
+  .filter((fruit) => !fruit.isRotten)
+  .map((fruit) => {
+    return {
+      ...fruit,
+      price: calculatePrice(fruit.name),
+    };
+  });
+```
+
+We are first filtering the rotten fruits, and we're adding the price tag only to the not rotten fruits.
+
+### flatMap
+
+This situation can be solved in a much more concise way using **_flatMap_**, but we first need to know what is the concept of **flattening**. The **_flat_** method will normalize nested arrays into a flat array (with no nesting). Let's take this example:
+
+```js
+const measures = [1, 2, [3, 4, 5], 6];
+```
+
+The array **measures** includes a nested array. We may want to have all the values in just one array, so we can use the flat method:
+
+```js
+const flatMeasures = measures.flat();
+// [1, 2, 3, 4, 5, 6]
+```
+
+We now know that the **_flat_** method normalizes an array. But the important feature is its behaviour when treating empty lists. It removes the element! As simple as that. We can take leverage of it in our process of transforming our stock.
+
+The **_flatMap_** method allows us to apply a transformation to all the elements of an array (same as map) and then flatten the result, eliminating nested arrays.
+
+Let's solve the problem of the stock with **_flatMap_**.
+
+## Solving the problem with flatMap
+
+This would be a first approach to solving this situation using **_flatMap_**.
+
+```js
+fruitsStock.flatMap((fruit) => {
+  if (fruit.isRotten) {
+    // We return an empty list, that after the transformation, will disappear
+    return [];
+  } else {
+    return {
+      ...fruit,
+      price: calculatePrice(fruit.name),
+    };
+  }
+});
+```
+
+We are basically filtering and mapping elements in only one call!
+
+We first check if the fruit is rotten. If it is, we return an empty array, that will result in eleminating the element from the result array. If not, we return the fruit with the price tag.
+
+Our solution looks fine, but we can make it even simpler using the ternary operator and the implicit return as follows:
+
+```js
+fruitsStock.flatMap((fruit) =>
+  fruit.isRotten
+    ? []
+    : {
+        ...fruit,
+        price: calculatePrice(fruit.name),
+      }
+);
+```
+
+Now it looks really good right? We simplified the logic of the function by using the ternary operator and the implicit return. The expression wil evaluate to different results depending on the **_isRotten_** attribute of each fruit.
+
+## Conclusions
+
+For me, the main advantage of using **_flatMap_** is that it keeps my code clean and concise because I can transform the array in one method call. Some people prefer the **_map-filter_** solution because it states clearly what is the intention behind those lines of code.
+
+In any case, I find it really interesting to explore all the tools that **JavaScript** offers so we can have a bigger programming toolbox.
+
+**_Thanks for reading!_**

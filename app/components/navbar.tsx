@@ -17,6 +17,7 @@ export default function Navbar() {
           <NavbarItem label="Home" path="/" />
           <NavbarItem label="About Me" path="/about" />
           <NavbarItem label="Posts" path="/posts" />
+          <NavbarItem label="Contact" path="/contact" />
         </ul>
       </nav>
     </header>

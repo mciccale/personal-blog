@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 
-type Path = '/' | '/about' | '/posts';
+type Path = '/' | '/about' | '/posts' | '/contact';
 
 interface Props {
   label: string;

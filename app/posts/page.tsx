@@ -3,7 +3,6 @@ import MainContainer from '../components/main-container';
 import PostPreview from './components/post-preview';
 
 export default async function Posts() {
-  await new Promise<void>((res) => setTimeout(() => res(), 3000));
   const posts = await getPostsPreview();
 
   return (
