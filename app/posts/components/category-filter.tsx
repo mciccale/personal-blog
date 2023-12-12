@@ -32,13 +32,13 @@ export default function CategoryFilter({ categories, setCategories }: Props) {
       <div className="pb-4 text-xl font-semibold">
         Categories:
         <button
-          className="mx-2 rounded-full bg-blue-600 px-2 font-medium text-white"
+          className="mx-2 rounded-full bg-blue-600 px-2 text-lg font-medium text-white"
           onClick={() => setVisible(!visible)}
         >
           {visible ? 'Hide' : 'Show'}
         </button>
         <button
-          className={`rounded-full bg-blue-600 px-2 font-medium text-white ${
+          className={`rounded-full bg-blue-600 px-2 text-lg font-medium text-white ${
             visible ? 'fill-inherit' : 'hidden'
           }`}
           onClick={() => setCategories([])}

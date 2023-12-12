@@ -1,4 +1,7 @@
+import '@/styles/highlight-js/tokyo-night-dark.css';
+
 import { MDXRemote } from 'next-mdx-remote/rsc';
+import rehypeHighlight from 'rehype-highlight';
 
 import Header from '@/app/components/header';
 import MainContainer from '@/app/components/main-container';
@@ -13,6 +16,14 @@ interface Props {
   };
 }
 
+const options = {
+  parseFrontmatter: true,
+  mdxOptions: {
+    remarkPlugins: [],
+    rehypePlugins: [rehypeHighlight],
+  },
+};
+
 export default async function Post({ params }: Props) {
   const markdown = await getPostBySlug(params.slug);
 
@@ -21,7 +32,8 @@ export default async function Post({ params }: Props) {
       <TextSection>
         <BackButton />
         {markdown ? (
-          <MDXRemote options={{ parseFrontmatter: true }} source={markdown} />
+          // @ts-ignore
+          <MDXRemote options={options} source={markdown} />
         ) : (
           <Header>404 - Post Not Found</Header>
         )}

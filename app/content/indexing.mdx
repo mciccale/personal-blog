@@ -1,0 +1,289 @@
+---
+title: 'The Power of Indexed Collections'
+description: 'Exploring indexed collections: Blazing fast method for accessing data.'
+image: '/indexing/cover.webp'
+date: '2023-12-12'
+categories:
+  - 'frontend'
+  - 'backend'
+  - 'web'
+  - 'javascript'
+  - 'programming languages'
+  - 'database'
+---
+
+# The Power of Indexed Collections
+
+## Introduction
+
+In today's post, we will explore a widely spread method to accelerate data manipulation within collections. It is called **indexing**, and we will be covering the basic fundamentals so you can apply this technique in your next project. I'll be using **JavaScript** snippets for the example, let's start!
+
+## What are Indexes?
+
+Before trying to understand what are **indexes** in the programming scope, we can try to understand them in a more accessible way. Imagine a book **index**, where you can search for a certain chapter and find the starting page of it. The **index** provides a list of the chapters to help readers find them in a much more _fast_ and _easy_ way.
+
+**Indexes** in programming are not that different. They provide a _fast_ and _easy_ way to access data within a collection. The only constraint is that you need to know what you're looking for before using an **indexed collection**.
+
+## How do Indexes Work
+
+Imagine I have an array of elements:
+
+```js
+const elements = ['elem0', 'elem1', 'elem2'];
+```
+
+Data within that array can be accessed as follows:
+
+```js
+elements[0];
+```
+
+Here, we're asking the collection for the value stored in the first position of the array. This type of **indexing** can be classified as _positional indexing_, which basically means we're indexing elements according to its position in the collection, and it's perfectly suitable for collections where the elements follow a specific order, such as arrays or lists.
+
+But we can also **index** collections where its elements don't follow a specific order, such as **JavaScript** objects for example.
+
+```js
+const elements = {
+  key: 0,
+  value: 'elem0',
+};
+```
+
+Data within that object can be accessed in 2 different ways:
+
+```js
+elements.key; // Here we're accessing the key property of the object
+// or
+elements['key']; // Here we're also accessing the key property of the object
+```
+
+The second notation is more flexible that the first one, you can insert expressions inside the square brackets that will evaluate to a value, which will then be used to try an access a certain property of the object:
+
+```js
+elements[0]; // Here we're trying to access a property with key = 0
+
+const property = 'key';
+elements[property]; // Here we're trying to access a property with key = 'key'
+```
+
+So yes, objects are also **indexable**, but in a different way. You can access an element in a collection by a value, not a position, which in many cases is really useful. We will be using this mechanism to implement our own **indexed collection**.
+
+## Searching for an Element inside a Collection
+
+Imagine we have this array of 10,000 elements:
+
+```js
+// Creating 10_000 random elements
+const elements = Array.from({ length: 10_000 }, (_, i) => ({
+  key: i,
+  value: `elem${i}`,
+}));
+```
+
+Here, we're creating an array of objects that have a key and a value, assigned to the index of the array:
+
+```js
+[
+  {
+    key: 0,
+    value: 'elem0',
+  },
+  {
+    key: 1,
+    value: 'elem1',
+  },
+  // ...
+  {
+    key: 9999,
+    value: 'elem9999',
+  },
+];
+```
+
+To find a specific element in the array, for example 90, we would tipically do it in this way:
+
+```js
+elements.find((element) => element.key === 90);
+```
+
+Internally, this method is going through all the elements of the collection and testing if the element is the one I'm trying to find. In this case, the program would have to look at the first 91 elements in the collection to find it. Now imagine I'm searching for the 10,000th element, the program would have to look at all the elements of the array, which may lead to bad performance.
+
+In [_Big O Notation_](https://www.freecodecamp.org/news/big-o-notation-why-it-matters-and-why-it-doesnt-1674cfa8a23c/), it would be **O(n)** time complexity.
+
+## Indexing a Collection
+
+To solve the situation of searching a specific element within an array, we can use **indexing** to speed up the solution. The main idea of **indexing** is being able to access an element directly by an identifier, like this:
+
+```js
+// before
+elements.find((element) => element.key === 90);
+
+// after
+elementsIndex[90];
+```
+
+Here, the **elementsIndex** variable represents our index for accessing the elements. This will make accessing data much more efficient than having to loop through all the array until the element is found. So let's implement it!
+
+```js
+// Function to save an element in the index
+const saveElementToIndex = (indexAcc, element) => {
+  indexAcc[element.key] = element;
+  return indexAcc;
+};
+
+// Function to create index
+const createIndex = (elements) => {
+  return elements.reduce(saveElementToIndex, {});
+};
+```
+
+This is all we need to do it, but let's analyze each part of the code separately.
+
+### Reduce
+
+If you're not familiar with the **reduce** method, don't worry, I'll explain the fundamentals of it, but if you want to learn more about it (recommended) checkout the [MDN JS Documentation](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/reduce).
+
+The **reduce** operation executes a **reducer** function to each of the elements of the array, in order, providing the returned value of the reducer function call as a parameter to the next execution on the reducer function. The call to **reduce** only returns one value and can accept a second parameter, the initial value of the accumulator.
+
+In other words, we can execute a function on every iteration and _pipeline_ its result to the next call.
+
+A basic example is calculating the sum of all elements of an array:
+
+```js
+const numbers = [1, 2, 3, 4, 5];
+numbers.reduce((acc, number) => acc + number, 0); // 15
+```
+
+We're adding the previous accumulator with the current number:
+
+```js
+0 + 1; // first iteration
+1 + 2; // second iteration
+// ...
+10 + 5; // final iteration
+```
+
+### Using Reduce to Create the Index
+
+Let's take a look at the **createIndex** function:
+
+```js
+// Function to create index
+const createIndex = (elements) => {
+  return elements.reduce(saveElementToIndex, {});
+};
+```
+
+It takes an array of objects that include a **key** property as a parameter and applies a **reduce** operation to it.
+
+Note that the value of each element's **key** **MUST** be unique.
+
+We will transform our collection into an object that has as **keys** the **key** of each element and the reference to the element as a value.
+
+```js
+elementsIndex[90]; // the element in the collection with id 90
+```
+
+### The Reducer Function
+
+Here comes the _tricky_ part, the **reducer function**. Let's take a look:
+
+```js
+// Function to save an element in the index
+const saveElementToIndex = (indexAcc, element) => {
+  indexAcc[element.key] = element;
+  return indexAcc;
+};
+```
+
+It is not that hard to catch, we're adding a new **key-value** pair to the **indexAcc** object. The new pair will have the following structure:
+
+```js
+0: element;
+```
+
+We're adding a key that is the **id** of the element, and assigning the whole element as the value of it.
+
+And that's it, let's try and benchmark it!
+
+## Benchmarks
+
+Here we have the whole code that I have used to make a simple test. The test consists of searching for all the elements of a collection using 2 different strategies:
+
+1. Using the **find** method.
+2. Creating an **index** and then accessing the values.
+
+Here I create a big array with objects as elements, they have a **key** and a **value** properties.
+
+```javascript
+// Creating 10_000 random elements
+const elements = Array.from({ length: 10_000 }, (_, i) => ({
+  key: i,
+  value: `elem${i}`,
+}));
+```
+
+Now, I declare all the functions that we will need, which were discussed earlier in the post:
+
+```js
+
+// Function to save an element in the index
+const saveElementToIndex = (indexAcc, element) => {
+  indexAcc[element.key] = element;
+  return indexAcc;
+};
+
+// Function to create index
+const createIndex = (elements) => {
+  return elements.reduce(saveElementToIndex, {});
+}
+
+// Searching functions with and without indexing
+const searchWithoutIndexing = (elements, key) => (
+  elements.find((element) => element.key === key);
+);
+
+const searchWithIndexing = (index, key) => index[key];
+```
+
+These are the tests that I executed:
+
+```js
+console.time('Not Using Indexing');
+
+for (let i = 9999; i > 0; --i) {
+  searchWithoutIndexing(elements, i);
+}
+
+console.timeEnd('Not Using Indexing');
+```
+
+```js
+console.time('Using Indexing');
+
+const index = createIndex(elements);
+
+for (let i = 9999; i > 0; --i) {
+  searchWithIndexing(index, i);
+}
+
+console.timeEnd('Using Indexing');
+```
+
+And these are the impressive results:
+
+```shell
+$ node tmp.js
+Not Using Indexing: 280.721ms
+Using Indexing: 1.42ms
+```
+
+If you don't believe me, you can execute the code yourself ;)
+
+## Conclusions
+
+The **indexing** world has much more advanced concepts that we didn't explore of course, but I tried to give you a little glimpse of what is the power of **indexes**. Behind the scene, **SQL** databases use super-advanced **indexing** techniques to make them fast, here we're just implementing a toy-like **index**, but great for learning how it works.
+
+I'd recommend using **indexes** in your project if you have large amount of data in _array-like_ format and you're accessing elements really often, in this situations is where **indexing** shines and reveals its true power!
+
+**_Thanks for Reading!_**
