@@ -1,5 +1,5 @@
-import { getPostsPreview } from '../lib/postUtils';
 import MainContainer from '../components/main-container';
+import { getPostsPreview } from '../lib/postUtils';
 import PostsSection from './components/posts-section';
 
 export default async function Posts() {

@@ -1,6 +1,7 @@
 'use client';
 
 import { useVisibilityOnScrollUp } from 'use-visibility-on-scroll-up';
+
 import NavbarItem from './navbar-item';
 
 export default function Navbar() {

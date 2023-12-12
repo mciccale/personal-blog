@@ -1,8 +1,10 @@
 import Image from 'next/image';
+
+import profilePicture from '@/public/profile-picture.png';
+
 import Header from '../components/header';
 import MainContainer from '../components/main-container';
 import TextSection from '../components/text-section';
-import profilePicture from '@/public/profile-picture.png';
 
 export default function About() {
   return (

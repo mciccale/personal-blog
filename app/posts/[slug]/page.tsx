@@ -1,8 +1,10 @@
 import { MDXRemote } from 'next-mdx-remote/rsc';
-import { getPostBySlug } from '@/app/lib/postUtils';
+
+import Header from '@/app/components/header';
 import MainContainer from '@/app/components/main-container';
 import TextSection from '@/app/components/text-section';
-import Header from '@/app/components/header';
+import { getPostBySlug } from '@/app/lib/postUtils';
+
 import BackButton from '../components/back-button';
 
 interface Props {

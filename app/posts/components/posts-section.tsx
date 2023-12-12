@@ -1,10 +1,11 @@
 'use client';
 
-import { PostCategory, PostPreview } from '@/app/lib/types';
 import { useState } from 'react';
+
+import { PostCategory, PostPreview } from '@/app/lib/types';
+
 import CategoryFilter from './category-filter';
 import PostPreviews from './post-previews';
-import { POST_CATEGORIES } from '@/app/lib/constants';
 
 interface Props {
   posts: PostPreview[];

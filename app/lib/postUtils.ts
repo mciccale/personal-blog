@@ -1,7 +1,9 @@
 import * as fs from 'node:fs/promises';
 import * as path from 'node:path';
+
 import { compileMDX } from 'next-mdx-remote/rsc';
-import type { PostPreview, Frontmatter } from './types';
+
+import type { Frontmatter, PostPreview } from './types';
 
 const postsPath = path.join(process.cwd(), 'app', 'content');
 

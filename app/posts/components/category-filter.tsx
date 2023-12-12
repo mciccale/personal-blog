@@ -1,10 +1,12 @@
 'use client';
 
 import { Dispatch, SetStateAction, useState } from 'react';
-import { POST_CATEGORIES } from '@/app/lib/constants';
-import CategoryButton from './category-button';
+
 import TextSection from '@/app/components/text-section';
+import { POST_CATEGORIES } from '@/app/lib/constants';
 import { PostCategory } from '@/app/lib/types';
+
+import CategoryButton from './category-button';
 
 interface Props {
   categories: PostCategory[];

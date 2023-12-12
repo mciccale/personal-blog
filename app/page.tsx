@@ -1,4 +1,5 @@
 import Link from 'next/link';
+
 import Header from './components/header';
 import MainContainer from './components/main-container';
 import TextSection from './components/text-section';
@@ -8,10 +9,9 @@ export default function Home() {
     <MainContainer>
       <TextSection>
         <Header>
-          Hi <span className="italic">devs</span> 👾,
+          👾 Welcome to my <span className="italic">coding corner</span>
         </Header>
         <p>
-          Welcome to my little <span className="italic">coding corner</span>!
           This is a space where I&apos;d love to share my experiences, knowledge
           and challenges encountered during my exciting journey mastering my
           passion:{' '}

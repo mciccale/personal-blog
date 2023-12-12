@@ -1,10 +1,11 @@
 'use client';
 
+import emailjs from '@emailjs/browser';
 import { useRef } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
-import emailjs from '@emailjs/browser';
-import TextSection from '../components/text-section';
+
 import MainContainer from '../components/main-container';
+import TextSection from '../components/text-section';
 
 interface Inputs {
   from_email: string;
