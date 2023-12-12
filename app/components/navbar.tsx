@@ -9,7 +9,7 @@ export default function Navbar() {
 
   return (
     <header
-      className={`fixed top-0 w-full bg-white px-8 opacity-90 shadow-lg ${
+      className={`fixed top-0 w-full bg-white px-8 dark:bg-gray-900 ${
         visible || lastScroll === 0 ? 'visible' : 'hidden'
       }`}
     >

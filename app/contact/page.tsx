@@ -49,7 +49,7 @@ export default function Contact() {
           className="flex flex-col gap-10"
         >
           <input
-            className="rounded-lg border-2 border-solid border-blue-200 p-3 focus:shadow-lg focus:outline-none focus:ring-2 focus:ring-blue-600"
+            className="rounded-lg border-2 border-solid border-blue-200 p-3 focus:shadow-lg focus:outline-none focus:ring-2 focus:ring-blue-600 dark:border-blue-600 dark:bg-gray-900 dark:focus:ring-blue-600"
             type="text"
             placeholder="Name"
             {...register('from_name', { required: true })}
@@ -60,7 +60,7 @@ export default function Contact() {
             </span>
           )}
           <input
-            className="rounded-lg border-2 border-solid border-blue-200 p-3 focus:shadow-lg focus:outline-none focus:ring-2 focus:ring-blue-600"
+            className="rounded-lg border-2 border-solid border-blue-200 p-3 focus:shadow-lg focus:outline-none focus:ring-2 focus:ring-blue-600 dark:border-blue-600 dark:bg-gray-900 dark:focus:ring-blue-600"
             type="email"
             placeholder="your@email.com"
             {...register('from_email', {
@@ -74,7 +74,7 @@ export default function Contact() {
             </span>
           )}
           <textarea
-            className="rounded-lg border-2 border-solid border-blue-200 p-3 focus:shadow-lg focus:outline-none focus:ring-2 focus:ring-blue-600"
+            className="rounded-lg border-2 border-solid border-blue-200 p-3 focus:shadow-lg focus:outline-none focus:ring-2 focus:ring-blue-600 dark:border-blue-600 dark:bg-gray-900 dark:focus:ring-blue-600"
             placeholder="Message"
             {...register('message', { required: true })}
           />
@@ -84,7 +84,7 @@ export default function Contact() {
             </span>
           )}
           <button
-            className="rounded-lg bg-blue-200 p-6 font-semibold hover:bg-blue-400 hover:shadow-lg"
+            className="rounded-lg bg-blue-400 p-6 font-semibold hover:shadow-lg dark:bg-blue-700"
             type="submit"
           >
             Send Message

@@ -11,7 +11,7 @@ export default function PostPreview({
 }: PostPreview) {
   return (
     <Link key={slug} href={`/posts/${slug}`}>
-      <figure className="mx-auto flex max-h-80 max-w-2xl overflow-x-auto rounded-lg border-2 border-solid border-blue-200 hover:border-blue-600 hover:shadow-lg">
+      <figure className="mx-auto flex max-h-80 max-w-2xl overflow-x-auto rounded-lg border-2 border-solid border-blue-600 hover:border-blue-400 hover:shadow-lg dark:text-white">
         <div className="hidden flex-shrink-0 sm:block">
           <Image
             className="rounded-l-md"

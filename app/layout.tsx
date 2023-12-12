@@ -2,6 +2,7 @@ import './globals.css';
 
 import type { Metadata } from 'next';
 import { Montserrat } from 'next/font/google';
+import { ThemeProvider } from 'next-themes';
 
 import Navbar from './components/navbar';
 
@@ -40,7 +41,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`${montserrat.className} mt-24`}>
+      <body className={`${montserrat.className} mt-24 dark:bg-gray-900`}>
         <Navbar />
         {children}
       </body>

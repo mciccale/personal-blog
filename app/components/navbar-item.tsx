@@ -19,9 +19,9 @@ export default function NavbarItem({ label, path }: Props) {
         className={`${
           pathname === path ||
           (pathname.includes('posts') && path.includes('posts'))
-            ? 'text-black'
-            : 'text-gray-500'
-        } rounded-full py-2 text-lg font-bold hover:text-gray-700 md:text-2xl`}
+            ? 'text-black dark:text-white'
+            : 'text-gray-500 dark:text-gray-300'
+        } rounded-full py-2 text-lg font-bold hover:text-black dark:hover:text-white md:text-2xl`}
       >
         {label}
       </li>
