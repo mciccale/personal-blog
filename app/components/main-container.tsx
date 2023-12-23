@@ -3,5 +3,5 @@ interface Props {
 }
 
 export default function MainContainer({ children }: Props) {
-  return <main className="p-8">{children}</main>;
+  return <main className="px-8 md:py-8 ">{children}</main>;
 }
