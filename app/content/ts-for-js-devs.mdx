@@ -1,0 +1,151 @@
+---
+title: 'TypeScript for JavaScript Developers'
+description: 'Exploring TypeScript: A Robust and Strong SuperSet of JavaScript.'
+image: '/ts-for-js-devs/cover.jpg'
+date: '2024-01-08'
+categories:
+  - 'frontend'
+  - 'backend'
+  - 'web'
+  - 'javascript'
+  - 'typescript'
+  - 'tutorial'
+  - 'programming languages'
+---
+
+# TypeScript for JavaScript Developers
+
+## Introduction
+
+In this post I'd like to create a small but resourceful **TypeScript** guide for **JavaScript** developers. By the end of this post, I'll pack you with everything you need to know to start working with **TypeScript**, and hopefully you will fall for this language, as I did when I first met it. Let's get started.
+
+## Types
+
+We, developers, come across the concept of **types** in a daily basis. We all know that a **type** describes the shape (and sometimes the behaviour) of data in any programming language. **Types** are everywhere, sometimes we don't notice them _explicitely_, but they are a necessary piece in the game of programming.
+
+There is also diversity in how programming languages work around these **types**. We will be analyzing the **type system** in both **JavaScript** and **TypeScript**, why are they different, and their purposes also.
+
+## JavaScript Type System
+
+If I had to describe the **type system** of **JavaScript** in one sentence, I would quote **Mr. Forrest Gump**!
+
+> JavaScript's type system is like a box of chocolates: You never know what you're gonna get!
+
+As simple as that. You are completely free in terms of **types**. There are not rules of what you **can** or **cannot** do. It is great right? Freedom!!!
+
+For example, we can do this:
+
+```js
+let myName = 'Marco';
+myName = 9;
+myName = ['apple', 'banana'];
+myName = { price: 10, date: Date.now() };
+```
+
+This is totally valid **JavaScript** code. We can assign any datatype to a variable. Why would freedom be a bad thing?
+
+Let's take this example:
+
+```js
+const addNumbers = (a, b) => a + b;
+```
+
+A really simple function right? It just returns the sum of two numbers:
+
+```js
+console.log(addNumbers(2, 3)); // 5
+```
+
+But what if we "accidentally" pass a _string_ as the second argument?
+
+```js
+console.log(addNumbers(2, 'three')); // '5three'
+```
+
+_**Boom!**_ We get the concatenation of 2 converted as a _string_ with the second _string_ as an argument. Wait, it gets even crazier! Take this example:
+
+```js
+console.log(addNumbers(2, [3])); // '53'
+```
+
+_**Magic!**_ Who would even think that the result of adding _2_ and an _array_ with _3_ would be the _string_ _'53'_.
+
+As Forrest Gump said, a **box of chocolates** 🍫.
+
+In a _sandbox_ envirnoment, we can control (not everytime) what datatypes are being used in our program. But when dealing with external sources as API data, user input, etc. It is very hard to eliminate this problems.
+
+**JavaScript** is a great language, and large companies did not want to stop using it, but they felt the necessity of having another level of robustness and fiability. Here is where **TypeScript** came to please them!
+
+## What is TypeScript
+
+**TypeScript** is defined as a _"JavaScript Superset"_. This means that all the valid **JavaScript** code is also valid **TypeScript** code. This is great for progressively adopting **TypeScript** features in an existing **JavaScript** project.
+
+But what does **TypeScript** bring to the table?
+
+### Strong Static Typing
+
+For example, if we declare a variable and assign it to a certain value, automatically, **TypeScript** infers the type of the expression and constraints the variable to only be capable of store values that have the same type as the original value.
+
+```js
+let myName = 'Marco';
+myName = 9; // ❌ TypeScript Error
+myName = ['apple', 'banana']; // ❌ TypeScript Error
+nyName = 'Marco Ciccalè Baztán'; // ✅ Same Datatype
+```
+
+### Type Annotations
+
+We can specify the type of a variable in **TypeScript** and get the advantages explained before. Once a variable is tied to a specific type, the type of the variable cannot change. Let's see an example:
+
+```ts
+let myName: string;
+myName = 'Marco'; // ✅ Same Datatype as Annotated Type
+myName = 9; // ❌ TypeScript Error
+```
+
+So we can declare variables and annotate its type without the need of initializing it.
+
+We can also type objects and functions, take a look:
+
+```ts
+// Object Type Annotation
+const user: { username: string; age: number } = {
+  username: 'user1',
+  age: 20,
+};
+```
+
+```ts
+// Function Parameters and Return Value Type Annotations
+const userToString = (username: string, age: number): string => {
+  return `The user with username: ${username}, is ${age} years old!`;
+};
+```
+
+In the case of functions, **TypeScript** ensures that the parameters passed to the function are of the correct type, and it also ensures that the return value of the function is also of the correct type.
+
+### Custom Types
+
+**TypeScript** allows us to declare our own custom **types**, so we do not have to write _boilerplate_ code everytime we want to type the same type of object. We can define it once and use it as many times as we want. For example:
+
+```ts
+// We declare our type
+type UserType = {
+  username: string;
+  age: number;
+};
+
+// We can reuse it anywhere
+// Note -> this is the same as annotating the type like this:
+//         { username: string; age: number }
+const user: UserType = {
+  username: 'user1',
+  age: 20,
+};
+```
+
+## Conclusions
+
+I hope you found this article helpful in any manner. **TypeScript** is a widely used tool in the development world and a lot of of your famous frameworks and tools are transitioning to **TypeScript** because of its development experience (Next.js for example). I have equipped you with the basics of **TypeScript** so you can start building in a safer way. **_Embrace typing!_**
+
+**_Thanks for Reading!_**
