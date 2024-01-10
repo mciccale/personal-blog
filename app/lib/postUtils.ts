@@ -23,7 +23,7 @@ export async function getAllPostsSlugs(): Promise<string[]> {
   }
 }
 
-async function getPostPreviewBySlug(slug: string): Promise<PostPreview> {
+export async function getPostPreviewBySlug(slug: string): Promise<PostPreview> {
   const { frontmatter } = await compileMDX<Frontmatter>({
     source: (await getPostBySlug(slug)) ?? '',
     options: {

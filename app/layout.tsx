@@ -3,15 +3,20 @@ import './globals.css';
 import { Analytics } from '@vercel/analytics/react';
 import type { Metadata } from 'next';
 import { Montserrat } from 'next/font/google';
-import { ThemeProvider } from 'next-themes';
 
 import Navbar from './components/navbar';
 
 const montserrat = Montserrat({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
-  title: 'Coding Corner Blog',
-  description: 'The Coding Corner Blog made by Marco Ciccale',
+  title: {
+    default: 'My Coding Corner Blog',
+    template: '%s - My Coding Corner Blog',
+  },
+  description: 'My Coding Corner Blog made by Marco Ciccale',
+  twitter: {
+    card: 'summary_large_image',
+  },
   creator: 'Marco Ciccale Baztán',
   publisher: 'Marco Ciccale Baztán',
   robots: 'noindex',
