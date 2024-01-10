@@ -1,4 +1,3 @@
-import { Metadata } from 'next';
 import Link from 'next/link';
 
 import Bold from './components/bold';
@@ -6,16 +5,12 @@ import Header from './components/header';
 import MainContainer from './components/main-container';
 import TextSection from './components/text-section';
 
-export const metadata: Metadata = {
-  title: 'Home',
-};
-
 export default function Home() {
   return (
     <MainContainer>
       <TextSection>
         <Header>
-          👾 Welcome to my <span className="italic">coding corner</span>
+          👾 Welcome to My <span className="italic">Coding Corner</span>
         </Header>
         <p>
           This is a space where I&apos;d love to share my experiences, knowledge

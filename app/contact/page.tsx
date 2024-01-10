@@ -4,6 +4,7 @@ import emailjs from '@emailjs/browser';
 import { useRef } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 
+import Header from '../components/header';
 import MainContainer from '../components/main-container';
 import TextSection from '../components/text-section';
 
@@ -42,11 +43,12 @@ export default function Contact() {
   return (
     <MainContainer>
       <TextSection>
+        <Header>Contact Me</Header>
         <form
           noValidate
           ref={formRef}
           onSubmit={handleSubmit(onSubmit)}
-          className="flex flex-col gap-10"
+          className="mt-3 flex flex-col gap-10"
         >
           <input
             className="rounded-lg border-2 border-solid border-blue-200 p-3 focus:shadow-lg focus:outline-none focus:ring-2 focus:ring-blue-600 dark:border-blue-600 dark:bg-gray-900 dark:focus:ring-blue-600"

@@ -5,40 +5,11 @@ import type { Metadata } from 'next';
 import { Montserrat } from 'next/font/google';
 
 import Navbar from './components/navbar';
+import { metadataContent } from './lib/constants';
 
 const montserrat = Montserrat({ subsets: ['latin'] });
 
-export const metadata: Metadata = {
-  title: {
-    default: 'My Coding Corner Blog',
-    template: '%s - My Coding Corner Blog',
-  },
-  description: 'My Coding Corner Blog made by Marco Ciccale',
-  twitter: {
-    card: 'summary_large_image',
-  },
-  creator: 'Marco Ciccale Baztán',
-  publisher: 'Marco Ciccale Baztán',
-  robots: 'noindex',
-  category: 'Tech Blog',
-  keywords: [
-    'blog',
-    'programming',
-    'ciccale',
-    'marco',
-    'javascript',
-    'typescript',
-    'nextjs',
-    'reactjs',
-    'html',
-    'css',
-    'tailwindcss',
-    'framework',
-    'library',
-    'web',
-    'portfolio',
-  ],
-};
+export const metadata: Metadata = metadataContent;
 
 export default function RootLayout({
   children,
