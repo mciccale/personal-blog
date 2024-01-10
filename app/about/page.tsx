@@ -1,3 +1,4 @@
+import { Metadata } from 'next';
 import Image from 'next/image';
 
 import profilePicture from '@/public/profile-picture.png';
@@ -6,6 +7,10 @@ import Bold from '../components/bold';
 import Header from '../components/header';
 import MainContainer from '../components/main-container';
 import TextSection from '../components/text-section';
+
+export const metadata: Metadata = {
+  title: 'About Me',
+};
 
 export default function About() {
   return (

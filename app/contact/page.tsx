@@ -1,6 +1,8 @@
 'use client';
 
 import emailjs from '@emailjs/browser';
+import { Metadata } from 'next';
+import { title } from 'process';
 import { useRef } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 
@@ -13,6 +15,10 @@ interface Inputs {
   from_name: string;
   message: string;
 }
+
+export const metadata: Metadata = {
+  title: 'Contact',
+};
 
 export default function Contact() {
   const formRef = useRef<HTMLFormElement>(null);
