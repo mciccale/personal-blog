@@ -52,4 +52,8 @@ export const metadataContent: Metadata = {
     'marco ciccale baztan',
     'portfolio',
   ],
+  other: {
+    'google-site-verification': process.env
+      .NEXT_PUBLIC_GOOGLE_ANALYTICS as string,
+  },
 };

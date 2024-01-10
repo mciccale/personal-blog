@@ -1,13 +1,18 @@
 import '@/styles/highlight-js/tokyo-night-dark.css';
 
 import { Metadata, ResolvingMetadata } from 'next';
+import { notFound } from 'next/navigation';
 import { MDXRemote } from 'next-mdx-remote/rsc';
 import rehypeHighlight from 'rehype-highlight';
 
 import Header from '@/app/components/header';
 import MainContainer from '@/app/components/main-container';
 import TextSection from '@/app/components/text-section';
-import { getPostBySlug, getPostPreviewBySlug } from '@/app/lib/postUtils';
+import {
+  getPostBySlug,
+  getPostPreviewBySlug,
+  getPostsPreview,
+} from '@/app/lib/postUtils';
 
 import BackButton from '../components/back-button';
 
@@ -15,6 +20,12 @@ interface Props {
   params: {
     slug: string;
   };
+}
+
+export async function generateStaticParams() {
+  const postsPreview = await getPostsPreview();
+
+  return postsPreview.map(({ slug }) => slug);
 }
 
 export async function generateMetadata(
@@ -45,16 +56,14 @@ const options = {
 export default async function Post({ params: { slug } }: Props) {
   const markdown = await getPostBySlug(slug);
 
+  if (!markdown) notFound();
+
   return (
     <MainContainer>
       <TextSection>
         <BackButton />
-        {markdown ? (
-          // @ts-ignore
-          <MDXRemote options={options} source={markdown} />
-        ) : (
-          <Header>404 - Post Not Found</Header>
-        )}
+        {/* @ts-ignore */}
+        <MDXRemote options={options} source={markdown} />
       </TextSection>
     </MainContainer>
   );
