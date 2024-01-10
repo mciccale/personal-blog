@@ -53,7 +53,6 @@ export const metadataContent: Metadata = {
     'portfolio',
   ],
   other: {
-    'google-site-verification': process.env
-      .NEXT_PUBLIC_GOOGLE_ANALYTICS as string,
+    'google-site-verification': 'matDb91_GQUyYXOYYkQLKOiUkfiSnGEeD5tOdNDm6hg',
   },
 };
